@@ -29,6 +29,7 @@ namespace Numlib.NET.Structures
         }
         #endregion
 
+        #region Properties and object methods
         public int GetVectorSize
         {
             get
@@ -36,24 +37,7 @@ namespace Numlib.NET.Structures
                 return ndim;
             }
         }
-        public double this[int i]
-        {
-            get
-            {
-                if (i < 0 || i > ndim)
-                {
-                    throw new IndexOutOfRangeException("Requested vector index is out of range !");
-                }
-                else
-                {
-                    return vector[i];
-                }
-            }
-            set
-            {
-                vector[i] = value;
-            }
-        }
+
 
         public RVector Clone()
         {
@@ -91,6 +75,27 @@ namespace Numlib.NET.Structures
         public override int GetHashCode()
         {
             return vector.GetHashCode();
+        }
+        #endregion
+
+        #region Operators
+        public double this[int i]
+        {
+            get
+            {
+                if (i < 0 || i > ndim)
+                {
+                    throw new IndexOutOfRangeException("Requested vector index is out of range !");
+                }
+                else
+                {
+                    return vector[i];
+                }
+            }
+            set
+            {
+                vector[i] = value;
+            }
         }
 
         public static bool operator ==(RVector v1, RVector v2)
@@ -219,7 +224,6 @@ namespace Numlib.NET.Structures
             result[2] = v1[0] * v2[1] - v1[1] * v2[0];
             return result;
         }
-
-
+        #endregion
     }
 }

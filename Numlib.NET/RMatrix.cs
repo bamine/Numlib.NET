@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Numlib.NET.Structures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -119,7 +120,199 @@ namespace Numlib.NET
             return str.ToString();
         }
 
+        public override bool Equals(object obj)
+        {
+            return (obj is RMatrix) && (this.Equals((RMatrix) obj));
+        }
 
+        public bool Equals(RMatrix m)
+        {
+            return matrix == m.matrix;
+        }
+
+        public override int GetHashCode()
+        {
+            return matrix.GetHashCode();
+        }
+
+        public static bool operator ==(RMatrix m1, RMatrix m2)
+        {
+            return m1.Equals(m2);
+        }
+
+        public static bool operator !=(RMatrix m1, RMatrix m2)
+        {
+            return !m1.Equals(m2);
+        }
+
+        public static bool DimensionsEquals(RMatrix m1,RMatrix m2)
+        {
+            return (m1.nRows == m2.nRows) && (m1.nCols == m2.nCols);
+        }
+
+        public static RMatrix operator +(RMatrix m){
+            return m;
+        }
+
+        public static RMatrix operator -(RMatrix m)
+        {
+            for(int i=0;i<m.nRows;i++){
+                for(int j=0;j<m.nCols;j++){
+                    m[i, j] = -m[i, j];
+                }
+            }
+            return m;
+        }
+
+        public static RMatrix operator +(RMatrix m1, RMatrix m2)
+        {
+            if (!RMatrix.DimensionsEquals(m1, m2))
+            {
+                throw new ArgumentException("Matrix dimensions must match !");
+            }
+            var result = new RMatrix(m1.GetnRows, m1.GetnRows);
+            for (int i = 0; i < m1.nRows; i++)
+            {
+                for (int j = 0; j < m1.nCols; j++)
+                {
+                    result[i, j] = m1[i, j]+m2[i,j];
+                }
+            }
+            return result;
+        }
+
+        public static RMatrix operator -(RMatrix m1, RMatrix m2)
+        {
+            if (!RMatrix.DimensionsEquals(m1, m2))
+            {
+                throw new ArgumentException("Matrix dimensions must match !");
+            }
+            var result = new RMatrix(m1.GetnRows, m1.GetnRows);
+            for (int i = 0; i < m1.nRows; i++)
+            {
+                for (int j = 0; j < m1.nCols; j++)
+                {
+                    result[i, j] = m1[i, j] - m2[i, j];
+                }
+            }
+            return result;
+        }
+
+        public static RMatrix operator *(RMatrix m, double d)
+        {
+            var result = new RMatrix(m.GetnRows, m.GetnRows);
+            for (int i = 0; i < m.nRows; i++)
+            {
+                for (int j = 0; j < m.nCols; j++)
+                {
+                    result[i, j] = d* m[i, j];
+                }
+            }
+            return result;
+        }
+
+        public static RMatrix operator *(double d, RMatrix m)
+        {
+            return m * d;
+        }
+
+        public static RMatrix operator /(RMatrix m, double d)
+        {
+            var result = new RMatrix(m.GetnRows, m.GetnRows);
+            for (int i = 0; i < m.nRows; i++)
+            {
+                for (int j = 0; j < m.nCols; j++)
+                {
+                    result[i, j] = m[i, j]/d;
+                }
+            }
+            return result;
+        }
+
+        public static RMatrix operator *(RMatrix m1, RMatrix m2)
+        {
+            if (m1.GetnCols != m2.GetnRows)
+            {
+                throw new ArgumentException("The number of columns of the first matrix must be equal to the number of columns of the second matrix !");
+            }
+            double tmp = 0.0;
+            var result = new RMatrix(m1.GetnRows, m2.GetnCols);
+            for (int i = 0; i < m1.GetnRows; i++)
+            {
+                for (int j = 0; i < m2.GetnCols; j++)
+                {
+                    tmp = result[i, j];
+                    for (int k = 0; k < result.GetnRows; k++)
+                    {
+                        tmp += m1[i, k] * m2[k, j];
+                    }
+                    result[i, j] = tmp;
+                }
+            }
+            return result;
+        }
+
+        public void Transpose()
+        {
+            RMatrix m = new RMatrix(nRows, nCols);
+            for (int i = 0; i < nRows; i++)
+            {
+                for (int j = 0; j < nCols; j++)
+                {
+                    m[j, i] = matrix[i][j];
+                }
+            }
+            this = m;
+        }
+
+        public RMatrix GetTranspose()
+        {
+            RMatrix m = this;
+            m.Transpose();
+            return m;
+        }
+
+        public double GetTrace()
+        {
+            double trace = 0.0;
+            for (int i = 0; i < nRows; i++)
+            {
+                if (i < nCols)
+                {
+                    trace += matrix[i][i];
+                }
+            }
+            return trace;
+        }
+
+        public bool IsSquare()
+        {
+            return nRows == nCols;
+        }
+
+        public RVector GetRowVector(int n)
+        {
+            if (n < 0 || n > nRows)
+            {
+                throw new IndexOutOfRangeException("row is out of range !");
+            }
+            return new RVector(matrix[n]);
+        }
+
+        public RVector GetColVector(int m)
+        {
+            if (m < 0 || m > nRows)
+            {
+                throw new IndexOutOfRangeException("col is out of range !");
+            }
+            var result = new RVector(nRows);
+            for (int i = 0; i < nRows; i++)
+            {
+                result[i] = matrix[i][m];
+            }
+            return result;
+
+        }
        
     }
 }

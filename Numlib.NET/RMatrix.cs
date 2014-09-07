@@ -344,6 +344,28 @@ namespace Numlib.NET
                 matrix[i][n] = v[i];
             }
         }
+
+        public void SwapMatrixRows(int m, int n)
+        {
+            double temp = 0.0;
+            for (int i = 0; i < nCols; i++)
+            {
+                temp = matrix[n][i];
+                matrix[n][i] = matrix[m][i];
+                matrix[m][i] = temp;
+            }
+        }
+
+        public void SwapMatrixCols(int m, int n)
+        {
+            double temp = 0.0;
+            for (int i = 0; i < nCols; i++)
+            {
+                temp = matrix[i][n];
+                matrix[i][n] = matrix[i][m];
+                matrix[i][m] = temp;
+            }
+        }
        
     }
 }

@@ -290,28 +290,59 @@ namespace Numlib.NET
             return nRows == nCols;
         }
 
-        public RVector GetRowVector(int n)
+        public RVector GetRowVector(int m)
         {
-            if (n < 0 || n > nRows)
+            if (m < 0 || m > nRows)
             {
                 throw new IndexOutOfRangeException("row is out of range !");
             }
-            return new RVector(matrix[n]);
+            return new RVector(matrix[m]);
         }
 
-        public RVector GetColVector(int m)
+        public RVector GetColVector(int n)
         {
-            if (m < 0 || m > nRows)
+            if (n < 0 || n > nRows)
             {
                 throw new IndexOutOfRangeException("col is out of range !");
             }
             var result = new RVector(nRows);
             for (int i = 0; i < nRows; i++)
             {
-                result[i] = matrix[i][m];
+                result[i] = matrix[i][n];
             }
             return result;
+        }
 
+        public void ReplaceRow(RVector v, int m)
+        {
+            if (m < 0 || m > nRows)
+            {
+                throw new IndexOutOfRangeException("row is out of range !");
+            }
+            if (v.GetVectorSize != nCols)
+            {
+                throw new ArgumentException("Vector size must match matrix number of column !");
+            }
+            for (int i = 0; i < nCols; i++)
+            {
+                matrix[m][i] = v[i];
+            }
+        }
+
+        public void ReplaceCol(RVector v, int n)
+        {
+            if (n < 0 || n > nRows)
+            {
+                throw new IndexOutOfRangeException("col is out of range !");
+            }
+            if (v.GetVectorSize != nCols)
+            {
+                throw new ArgumentException("Vector size must match matrix number of rows !");
+            }
+            for (int i = 0; i < nCols; i++)
+            {
+                matrix[i][n] = v[i];
+            }
         }
        
     }

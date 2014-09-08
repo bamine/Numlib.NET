@@ -21,7 +21,7 @@ namespace Numlib.NET
             for (int i = 0; i < nRows; i++)
             {
                 matrix[i] = new double[nCols];
-                for(int j=0;j<nCols;j++)
+                for (int j = 0; j < nCols; j++)
                 {
                     matrix[i][j] = 0.0;
                 }
@@ -122,7 +122,7 @@ namespace Numlib.NET
 
         public override bool Equals(object obj)
         {
-            return (obj is RMatrix) && (this.Equals((RMatrix) obj));
+            return (obj is RMatrix) && (this.Equals((RMatrix)obj));
         }
 
         public bool Equals(RMatrix m)
@@ -145,19 +145,22 @@ namespace Numlib.NET
             return !m1.Equals(m2);
         }
 
-        public static bool DimensionsEquals(RMatrix m1,RMatrix m2)
+        public static bool DimensionsEquals(RMatrix m1, RMatrix m2)
         {
             return (m1.nRows == m2.nRows) && (m1.nCols == m2.nCols);
         }
 
-        public static RMatrix operator +(RMatrix m){
+        public static RMatrix operator +(RMatrix m)
+        {
             return m;
         }
 
         public static RMatrix operator -(RMatrix m)
         {
-            for(int i=0;i<m.nRows;i++){
-                for(int j=0;j<m.nCols;j++){
+            for (int i = 0; i < m.nRows; i++)
+            {
+                for (int j = 0; j < m.nCols; j++)
+                {
                     m[i, j] = -m[i, j];
                 }
             }
@@ -175,7 +178,7 @@ namespace Numlib.NET
             {
                 for (int j = 0; j < m1.nCols; j++)
                 {
-                    result[i, j] = m1[i, j]+m2[i,j];
+                    result[i, j] = m1[i, j] + m2[i, j];
                 }
             }
             return result;
@@ -205,7 +208,7 @@ namespace Numlib.NET
             {
                 for (int j = 0; j < m.nCols; j++)
                 {
-                    result[i, j] = d* m[i, j];
+                    result[i, j] = d * m[i, j];
                 }
             }
             return result;
@@ -223,7 +226,7 @@ namespace Numlib.NET
             {
                 for (int j = 0; j < m.nCols; j++)
                 {
-                    result[i, j] = m[i, j]/d;
+                    result[i, j] = m[i, j] / d;
                 }
             }
             return result;
@@ -252,6 +255,54 @@ namespace Numlib.NET
             return result;
         }
 
+        public static RVector operator *(RMatrix m, RVector v)
+        {
+            if (m.GetnCols != v.GetVectorSize)
+            {
+                throw new ArgumentException("matrix columns number must matche vector size !");
+            }
+            RVector result = new RVector(m.GetnCols);
+            for (int i = 0; i < m.nRows; i++)
+            {
+                result[i] = 0.0;
+                for (int j = 0; j < m.nCols; j++)
+                {
+                    result[i] += m[i, j] * v[j];
+                }
+            }
+            return result;
+        }
+
+        public static RVector operator *(RVector v, RMatrix m)
+        {
+            if (m.GetnRows != v.GetVectorSize)
+            {
+                throw new ArgumentException("matrix rows number must matche vector size !");
+            }
+            RVector result = new RVector(m.GetnRows);
+            for (int i = 0; i < m.nCols; i++)
+            {
+                result[i] = 0.0;
+                for (int j = 0; j < m.nRows; j++)
+                {
+                    result[i] += m[j, i] * v[j];
+                }
+            }
+            return result;
+        }
+
+        public static RMatrix Transform(RVector v1, RVector v2)
+        {
+            var result = new RMatrix(v1.GetVectorSize, v2.GetVectorSize);
+            for (int i = 0; i < result.GetnRows; i++)
+            {
+                for (int j = 0; j < result.GetnCols; j++)
+                {
+                    result[i, j] = v1[i] * v2[j];
+                }
+            }
+            return result;
+        }
         public void Transpose()
         {
             RMatrix m = new RMatrix(nRows, nCols);
@@ -366,6 +417,73 @@ namespace Numlib.NET
                 matrix[i][m] = temp;
             }
         }
-       
+
+        public static double Determinant(RMatrix m)
+        {
+            double result = 0.0;
+            if (!m.IsSquare())
+            {
+                throw new ArgumentException("Matrix must be square !");
+            }
+            if (m.GetnRows == 1)
+            {
+                result = m[0, 0];
+            }
+            else
+            {
+                for (int i = 0; i < m.GetnRows; i++)
+                {
+                    result += Math.Pow(-1, i) * m[0, i] * Determinant(RMatrix.Minor(m, 0, i));
+                }
+            }
+            return result;
+        }
+
+        public static RMatrix Minor(RMatrix m, int row, int col)
+        {
+            var mm = new RMatrix(m.GetnRows - 1, m.GetnCols - 1);
+            int ii = 0;
+            int jj = 0;
+            for (int i = 0; i < m.GetnRows; i++)
+            {
+                if (i == row) continue;
+                jj = 0;
+                for (int j = 0; j < m.GetnCols; j++)
+                {
+                    if (j == col) continue;
+                    mm[ii, jj] = m[i, j];
+                    jj++;
+                }
+                ii++;
+            }
+            return mm;
+        }
+
+        public static RMatrix Adjoint(RMatrix m)
+        {
+            if (!m.IsSquare())
+            {
+                throw new ArgumentException("Matrix must be square !");
+            }
+            var adj = new RMatrix(m.GetnRows, m.GetnCols);
+            for (int i = 0; i < m.GetnRows; i++)
+            {
+                for (int j = 0; j < m.GetnRows; j++)
+                {
+                    adj[i, j] = Math.Pow(-1, i + j) * Determinant(Minor(m, i, j));
+                }
+            }
+            return m.GetTranspose();
+        }
+
+        public static RMatrix Inverse(RMatrix m)
+        {
+            var det = Determinant(m);
+            if (det == 0.0)
+            {
+                throw new ArgumentException("Cannot invert a non-invertible matrix !");
+            }
+            return Adjoint(m) / det;
+        }
     }
 }

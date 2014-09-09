@@ -49,6 +49,50 @@ namespace Numlib.NET
         {
             return Math.Atan2(z.Imag, z.Real);
         }
+        public static Complex Conj(Complex z)
+        {
+            return new Complex(z.Real, -z.Imag);
+        }
+        public static double CNorm(Complex z)
+        {
+            return Math.Sqrt(z.Real * z.Real + z.Imag * z.Imag);
+        }
+        /// <summary>
+        /// Returns the norm (or modulus) of a complex avoiding potential underflow or overflow problems
+        /// </summary>
+        /// <param name="z"></param>
+        /// <returns>Norm of z</returns>
+        public static double CNorm2(Complex z)
+        {
+            double x = z.Real;
+            double y = z.Imag;
+            if (Math.Abs(x) < Math.Abs(y))
+            {
+                return (Math.Abs(y) * Math.Sqrt(1.0 + (x / y) * (x / y)));
+            }
+            else
+            {
+                return (Math.Abs(x) * Math.Sqrt(1.0 + (y / x) * (y / x)));
+            }
+        }
+
+        public static Complex Inv(Complex z)
+        {
+            return 1.0 / z;
+        }
+        public static double Re(Complex z)
+        {
+            return z.Real;
+        }
+        public static double Im(Complex z)
+        {
+            return z.Imag;
+        }
+        public static Complex FromPolar(double r, double theta)
+        {
+            return new Complex(r * Math.Cos(theta), r * Math.Sin(theta));
+        }
+
 
     }
 }

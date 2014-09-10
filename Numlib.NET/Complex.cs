@@ -181,5 +181,88 @@ namespace Numlib.NET
             return u;
         }
 
+        public static Complex operator /(Complex z1, Complex z2)
+        {
+            return CDiv2(z1, z2);
+        }
+
+        public static Complex operator /(double x, Complex z)
+        {
+            return CDiv2(new Complex(x, 0.0), z);
+        }
+
+        public static Complex operator /(Complex z, double x)
+        {
+            if (x == 0.0) return CInfinity;
+            return new Complex(z.Real / x, z.Imag / x);
+        }
+
+        public static bool operator ==(Complex z1, Complex z2)
+        {
+            return (z1.Real == z2.Real) && (z1.Imag == z2.Imag);
+        }
+
+        public static bool operator !=(Complex z1, Complex z2)
+        {
+            return !(z1 == z2);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return (obj is Complex) && (this ==(Complex)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Real.GetHashCode()^Imag.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0}+{1}i",Real,Imag);
+        }
+
+        public static Complex Exp(Complex z)
+        {
+            double x = z.Real;
+            double y = z.Imag;
+            double expx = Math.Exp(x);
+            return new Complex(expx * Math.Cos(y), expx * Math.Sin(y));
+        }
+
+        public static Complex Log(Complex z)
+        {
+            return new Complex(Math.Log(CNorm2(z)), Math.Atan2(z.Imag, z.Real));
+        }
+
+        public static Complex Log2(Complex z)
+        {
+            double x = z.Real;
+            double y = z.Imag;
+            double re = 0.5 * Math.Log(x * x + y * y);
+            double im = Math.Atan2(y, x);
+            return new Complex(re, im);
+        }
+
+        public static Complex Log10(Complex z)
+        {
+            return Complex.Log(z) / Math.Log(10.0);
+        }
+
+        public static Complex LogToBase(Complex z1,Complex z2)
+        {
+            return Complex.Log(z1)/Complex.Log(z2);
+        }
+
+        public static Complex Pow(Complex z1, Complex z2)
+        {
+            return Complex.Exp(z2 * Complex.Log(z1));
+        }
+
+
+
+
+
+
     }
 }

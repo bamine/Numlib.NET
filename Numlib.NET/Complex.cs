@@ -366,9 +366,16 @@ namespace Numlib.NET
             return Complex.Sin(z) / Complex.Cos(z);
         }
 
+        public static Complex Tan2(Complex z)
+        {
+            double x2 = 2.0 * z.Real;
+            double y2=2.0*z.Imag;
+            double denom = Math.Cos(x2) + Math.Cosh(y2);
+            if(denom ==0) return CInfinity;
+            double re = Math.Sin(x2) / denom;
+            double im = Math.Sinh(y2) / denom;
 
-
-
-
+            return new Complex(re, im);
+        }
     }
 }

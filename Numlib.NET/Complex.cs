@@ -333,6 +333,40 @@ namespace Numlib.NET
             return Complex.Root(z, 2.0);
         }
 
+        public static Complex Sin(Complex z)
+        {
+            return (Complex.Exp(i * z) - Complex.Exp(-i * z)) / (2.0 * i);
+        }
+
+        public static Complex Sin2(Complex z)
+        {
+            double x = z.Real;
+            double y = z.Imag;
+            double re = Math.Sin(x) * Math.Cosh(y);
+            double im = Math.Cos(x) * Math.Sinh(y);
+            return new Complex(re, im);
+        }
+
+        public static Complex Cos(Complex z)
+        {
+            return (Complex.Exp(i * z) + Complex.Exp(-i * z)) / (2.0 * i);
+        }
+
+        public static Complex Sin2(Complex z)
+        {
+            double x = z.Real;
+            double y = z.Imag;
+            double re = Math.Cos(x) * Math.Cosh(y);
+            double im = -Math.Sin(x) * Math.Sinh(y);
+            return new Complex(re, im);
+        }
+
+        public static Complex Tan(Complex z)
+        {
+            return Complex.Sin(z) / Complex.Cos(z);
+        }
+
+
 
 
 

@@ -259,7 +259,79 @@ namespace Numlib.NET
             return Complex.Exp(z2 * Complex.Log(z1));
         }
 
+        public static Complex Pow2(Complex z1, Complex z2)
+        {
+            double x1 = z1.Real;
+            double x2 = z2.Real;
+            double y1 = z1.Imag;
+            double y2 = z2.Imag;
+            double r1 = Math.Sqrt(x1 * x1 + y1 * y1);
+            double theta1 = Math.Atan2(y1, x1);
+            double phi = theta1 * x2 + y2 * Math.Log(r1);
 
+            double re = Math.Pow(r1, x2) * Math.Exp(-theta1 * y2) * Math.Cos(phi);
+            double im = Math.Pow(r1, x2) * Math.Exp(-theta1 * y2) * Math.Sin(phi);
+
+            return new Complex(re, im);
+        }
+
+        public static Complex Pow(Complex z, double x)
+        {
+            return Complex.Exp(x * Complex.Log2(z));
+        }
+
+        public static Complex Pow2(Complex z, double x)
+        {
+            double x1 = z.Real;
+            double y1 = z.Imag;
+            double r1 = Math.Sqrt(x1 * x1 + y1 * y1);
+            double theta1 = Math.Atan2(y1, x1);
+            double phi = theta1 * x;
+
+            double re = Math.Pow(r1, x) * Math.Cos(phi);
+            double im = Math.Pow(r1, x) * Math.Sin(phi);
+
+            return new Complex(re, im);
+        }
+
+        public static Complex Pow(double x, Complex z)
+        {
+            return Complex.Exp(z * Math.Log(x));
+        }
+
+        public static Complex Pow2(double x, Complex z)
+        {
+            double x2 = z.Real;
+            double y2 = z.Imag;
+            double r1 = Math.Sqrt(x*x);
+            double theta1 = Math.Atan2(0.0, x);
+            double phi = theta1 * x2+y2*Math.Log(r1);
+
+            double re = Math.Pow(r1, x2) * Math.Cos(phi);
+            double im = Math.Pow(r1, x2) * Math.Sin(phi);
+
+            return new Complex(re, im);
+        }
+
+        public static Complex Root(Complex z, Complex w)
+        {
+            return Complex.Exp(Complex.Log(z) / w);
+        }
+
+        public static Complex Root(Complex z, double x)
+        {
+            return Complex.Exp(Complex.Log(z) / x);
+        }
+
+        public static Complex Root(double x, Complex z)
+        {
+            return Complex.Exp(Math.Log(x) / z);
+        }
+
+        public static Complex Sqrt(Complex z)
+        {
+            return Complex.Root(z, 2.0);
+        }
 
 
 

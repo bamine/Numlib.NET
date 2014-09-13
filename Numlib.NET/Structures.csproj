@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Complex.cs" />
+    <Compile Include="CVector.cs" />
     <Compile Include="RVector.cs" />
     <Compile Include="RMatrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

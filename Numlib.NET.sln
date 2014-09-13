@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures", "Numlib.NET\Structures.csproj", "{8112D685-50AC-4724-97A9-07C1093378BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures", "Structures\Structures.csproj", "{8112D685-50AC-4724-97A9-07C1093378BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures.Tests", "Structures.Tests\Structures.Tests.csproj", "{91D106F4-FC6E-400E-8DFB-A8F9408677CA}"
 EndProject

@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Numlib.NET\Structures.csproj">
+    <ProjectReference Include="..\Structures\Structures.csproj">
       <Project>{8112d685-50ac-4724-97a9-07c1093378bd}</Project>
       <Name>Structures</Name>
     </ProjectReference>

@@ -41,7 +41,7 @@ namespace Numlib.NET.Structures
         {
             get
             {
-                return Real(this);
+                return new RVector(vector.Select(c => c.Real).ToArray());
             }
         }
 
@@ -49,7 +49,7 @@ namespace Numlib.NET.Structures
         {
             get
             {
-                return Imag(this);
+                return new RVector(vector.Select(c => c.Imag).ToArray());
             }
         }
 
@@ -185,16 +185,6 @@ namespace Numlib.NET.Structures
                 result[i] = v[i] / d;
             }
             return result;
-        }
-
-        public static RVector Real(CVector v)
-        {
-            return new RVector(v.vector.Select(c => c.Real).ToArray());
-        }
-
-        public static RVector Imag(CVector v)
-        {
-            return new RVector(v.vector.Select(c => c.Real).ToArray());
         }
 
         public static CVector Conj(CVector v)

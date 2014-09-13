@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CMatrix.cs" />
     <Compile Include="Complex.cs" />
     <Compile Include="CVector.cs" />
     <Compile Include="RVector.cs" />

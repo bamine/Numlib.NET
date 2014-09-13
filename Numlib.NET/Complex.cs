@@ -27,7 +27,7 @@ namespace Numlib.NET
             return new Complex(x, 0.0);
         }
         public static Complex CZero = new Complex(0.0, 0.0);
-        public static Complex COnr = new Complex(1.0, 0.0);
+        public static Complex COne = new Complex(1.0, 0.0);
         public static Complex i = new Complex(0.0, 1.0);
         public static Complex CNaN = new Complex(double.NaN, double.NaN);
         public static Complex CInfinity = new Complex(double.PositiveInfinity, double.PositiveInfinity);
@@ -352,7 +352,7 @@ namespace Numlib.NET
             return (Complex.Exp(i * z) + Complex.Exp(-i * z)) / (2.0 * i);
         }
 
-        public static Complex Sin2(Complex z)
+        public static Complex Cos2(Complex z)
         {
             double x = z.Real;
             double y = z.Imag;

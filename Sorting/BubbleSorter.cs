@@ -8,7 +8,7 @@ namespace Sorting
 {
     public class BubbleSorter
     {
-        static void Sort1(ref int[] x)
+        public static void Sort1(ref int[] x)
         {
             bool exchanges;
             do
@@ -27,9 +27,9 @@ namespace Sorting
             } while (exchanges);
         }
 
-        static void Sort2(ref int[] x)
+        public static void Sort2(ref int[] x)
         {
-            for (int pass = 0; pass < x.Length - 1; pass++)
+            for (int pass = 1; pass < x.Length - 1; pass++)
             {
                 for (int i = 0; i < x.Length - pass; i++)
                 {
@@ -43,26 +43,29 @@ namespace Sorting
             }
         }
 
-        static void Sort3(ref int[] x)
+        public static void Sort3(ref int[] x)
         {
             bool exchanges;
-            int n=x.Length;
+            int n = x.Length;
             do
             {
                 n--;
                 exchanges = false;
                 for (int i = 0; i < n; i++)
                 {
-                    int temp = x[i];
-                    x[i] = x[i + 1];
-                    x[i + 1] = temp;
-                    exchanges = true;
+                    if (x[i] > x[i + 1])
+                    {
+                        int temp = x[i];
+                        x[i] = x[i + 1];
+                        x[i + 1] = temp;
+                        exchanges = true;
+                    }
                 }
 
             } while (exchanges);
         }
 
-        static void Sort4(ref int[] x)
+        public static void Sort4(ref int[] x)
         {
             int lowerBound = 0;
             int upperBound = x.Length - 1;
@@ -89,7 +92,8 @@ namespace Sorting
                 }
 
                 lowerBound = firstExchange - 1;
-                if(lowerBound<0){
+                if (lowerBound < 0)
+                {
                     lowerBound = 0;
                 }
                 upperBound = lastExchange;

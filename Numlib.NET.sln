@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures", "Structures\St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures.Tests", "Structures.Tests\Structures.Tests.csproj", "{91D106F4-FC6E-400E-8DFB-A8F9408677CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting", "Sorting\Sorting.csproj", "{39F545ED-8103-413C-B0CB-154A6AE32C3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{91D106F4-FC6E-400E-8DFB-A8F9408677CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D106F4-FC6E-400E-8DFB-A8F9408677CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91D106F4-FC6E-400E-8DFB-A8F9408677CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F545ED-8103-413C-B0CB-154A6AE32C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F545ED-8103-413C-B0CB-154A6AE32C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F545ED-8103-413C-B0CB-154A6AE32C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F545ED-8103-413C-B0CB-154A6AE32C3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

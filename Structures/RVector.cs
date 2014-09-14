@@ -172,7 +172,7 @@ namespace Numlib.NET.Structures
             double result = 0.0;
             for (int i = 0; i < v1.ndim; i++)
             {
-                result += v1[i] * v2[i];
+                result += (v1[i] * v2[i]);
             }
             return result;
         }

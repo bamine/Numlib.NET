@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BubbleSorter.cs" />
     <Compile Include="CocktailSorter.cs" />
+    <Compile Include="OddEvenSorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

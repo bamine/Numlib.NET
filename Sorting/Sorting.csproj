@@ -43,6 +43,7 @@
     <Compile Include="CocktailSorter.cs" />
     <Compile Include="CombSorter.cs" />
     <Compile Include="GnomeSorter.cs" />
+    <Compile Include="InsertionSorter.cs" />
     <Compile Include="OddEvenSorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickSorter.cs" />

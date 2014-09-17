@@ -42,6 +42,7 @@
     <Compile Include="BubbleSorter.cs" />
     <Compile Include="CocktailSorter.cs" />
     <Compile Include="CombSorter.cs" />
+    <Compile Include="GnomeSorter.cs" />
     <Compile Include="OddEvenSorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -44,6 +44,7 @@
     <Compile Include="CocktailSorter.cs" />
     <Compile Include="CombSorter.cs" />
     <Compile Include="GnomeSorter.cs" />
+    <Compile Include="HeapSorter.cs" />
     <Compile Include="InsertionSorter.cs" />
     <Compile Include="MergeSorter.cs" />
     <Compile Include="OddEvenSorter.cs" />

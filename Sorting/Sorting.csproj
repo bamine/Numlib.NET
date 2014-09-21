@@ -43,6 +43,7 @@
     <Compile Include="BucketSorter.cs" />
     <Compile Include="CocktailSorter.cs" />
     <Compile Include="CombSorter.cs" />
+    <Compile Include="CountSorter.cs" />
     <Compile Include="GnomeSorter.cs" />
     <Compile Include="HeapSorter.cs" />
     <Compile Include="InsertionSorter.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="OddEvenSorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickSorter.cs" />
+    <Compile Include="RadixSorter.cs" />
     <Compile Include="SelectionSorter.cs" />
     <Compile Include="ShellSorter.cs" />
   </ItemGroup>

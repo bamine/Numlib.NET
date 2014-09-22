@@ -16,7 +16,7 @@ namespace Searching
 
             while (x[low] < searchValue && x[high] >= searchValue)
             {
-                mid = low + ((searchValue - low) * (high - low)) / (x[high] - x[low]);
+                mid = low + ((searchValue - x[low]) * (high - low)) / (x[high] - x[low]);
                 if (x[mid] < searchValue)
                 {
                     low = mid + 1;

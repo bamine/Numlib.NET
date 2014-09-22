@@ -42,7 +42,14 @@
     <Compile Include="BinarySearcher.cs" />
     <Compile Include="InterpolationSearcher.cs" />
     <Compile Include="LinearSearch.cs" />
+    <Compile Include="OrderStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sorting\Sorting.csproj">
+      <Project>{39f545ed-8103-413c-b0cb-154a6ae32c3c}</Project>
+      <Name>Sorting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

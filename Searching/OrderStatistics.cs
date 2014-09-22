@@ -40,6 +40,38 @@ namespace Searching
             return tempArray[n - 1];
         }
 
+        public static int MthSmallest(int[] x, int m)
+        {
+            var tempArray = new int[x.Length];
+            x.CopyTo(tempArray, 0);
+            Sorting.QuickSorter.Sort(ref tempArray);
+
+            return tempArray[m-1];
+        }
+
+        public static int MthSmallest2(int[] x, int m)
+        {
+            int maxIndex;
+            int minValue;
+            var tempArray = new int[x.Length];
+            x.CopyTo(tempArray, 0);
+            for (int i = 0; i < m; i++)
+            {
+                maxIndex = i;
+                minValue = tempArray[i];
+                for (int j = i + 1; j < tempArray.Length; j++)
+                {
+                    if (tempArray[i] < minValue)
+                    {
+                        maxIndex = j;
+                        minValue = tempArray[j];
+                    }
+                }
+                Swap(ref tempArray[i], ref tempArray[maxIndex]);
+            }
+            return tempArray[m - 1];
+        }
+
         private static void Swap(ref int p1, ref int p2)
         {
             int temp = p1;

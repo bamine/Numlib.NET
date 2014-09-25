@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures", "Structures\Structures.csproj", "{8112D685-50AC-4724-97A9-07C1093378BD}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting", "Sorting\Sorting.csproj", "{39F545ED-8103-413C-B0CB-154A6AE32C3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting.Tests", "Sorting.Tests\Sorting.Tests.csproj", "{8128017F-D9F9-461F-B39B-8A5A0E0332C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitwise", "Bitwise\Bitwise.csproj", "{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8128017F-D9F9-461F-B39B-8A5A0E0332C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8128017F-D9F9-461F-B39B-8A5A0E0332C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8128017F-D9F9-461F-B39B-8A5A0E0332C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

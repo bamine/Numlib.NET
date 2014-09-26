@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting", "Sorting\Sorting.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting.Tests", "Sorting.Tests\Sorting.Tests.csproj", "{8128017F-D9F9-461F-B39B-8A5A0E0332C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Searching", "Searching\Searching.csproj", "{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitwise", "Bitwise\Bitwise.csproj", "{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}"
 EndProject
 Global
@@ -35,6 +37,10 @@ Global
 		{8128017F-D9F9-461F-B39B-8A5A0E0332C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8128017F-D9F9-461F-B39B-8A5A0E0332C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8128017F-D9F9-461F-B39B-8A5A0E0332C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C8A609A-6D17-4E18-9D1E-00B9AFCC36EF}.Release|Any CPU.ActiveCfg = Release|Any CPU

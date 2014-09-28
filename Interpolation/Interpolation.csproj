@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarycentricInterpolation.cs" />
     <Compile Include="BilinearInterpolation.cs" />
     <Compile Include="LagrangeInterpolation.cs" />
     <Compile Include="LinearInterpolation.cs" />

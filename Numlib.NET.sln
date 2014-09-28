@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting.Tests", "Sorting.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Searching", "Searching\Searching.csproj", "{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interpolation", "Interpolation\Interpolation.csproj", "{E0DCE3A8-1B63-43B3-A4EC-8DEBC9EE1D2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC50AC5-1EF9-4EC6-A042-8816804AD98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0DCE3A8-1B63-43B3-A4EC-8DEBC9EE1D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0DCE3A8-1B63-43B3-A4EC-8DEBC9EE1D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0DCE3A8-1B63-43B3-A4EC-8DEBC9EE1D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0DCE3A8-1B63-43B3-A4EC-8DEBC9EE1D2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

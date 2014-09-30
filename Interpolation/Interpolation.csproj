@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BarycentricInterpolation.cs" />
     <Compile Include="BilinearInterpolation.cs" />
+    <Compile Include="CubicSplineInterpolation.cs" />
     <Compile Include="LagrangeInterpolation.cs" />
     <Compile Include="LinearInterpolation.cs" />
     <Compile Include="NewtonDividedDifferencesInterpolation.cs" />

@@ -6,7 +6,7 @@ using Numlib.NET.Structures;
 namespace LinearEquations.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class LinearEquationTests
     {
         [TestMethod]
         public void TestGaussJordan()

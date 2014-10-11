@@ -35,6 +35,21 @@ namespace Numlib.NET
             this.matrix = matrix;
         }
 
+        public RMatrix(double[,] matrix)
+        {
+            this.nRows = matrix.GetLength(0);
+            this.nCols = matrix.GetLength(1);
+            this.matrix=new double[nRows][];
+            for (int i = 0; i < nRows; i++)
+            {
+                this.matrix[i] = new double[nCols];
+                for (int j = 0; j < nCols; j++)
+                {
+                    this.matrix[i][j] = matrix[i, j];
+                }
+            }
+        }
+
         public RMatrix(RMatrix m)
         {
             this.nRows = m.nRows;

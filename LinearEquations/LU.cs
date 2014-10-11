@@ -10,7 +10,7 @@ namespace LinearEquations
 {
     public class LU
     {
-        const double epsilon = 1.0e-50;
+        const double epsilon = 1.0e-500;
 
         public static double LUCrout(RMatrix A, RVector b)
         {
@@ -53,7 +53,7 @@ namespace LinearEquations
                 double w = vector[i];
                 for (int j = 0; j < i; j++)
                 {
-                    w -= matrix[i, j] * vector[i];
+                    w -= matrix[i, j] * vector[j];
                 }
                 double p = matrix[i, i];
                 if (Math.Abs(w) < epsilon)

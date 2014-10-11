@@ -31,5 +31,17 @@ namespace LinearEquations.Tests
             var x = inverse * A;
             Assert.IsTrue((inverse*A).GetTrace() -3 <=0.01);
         }
+
+        [TestMethod]
+        public void TestGaussJacobi()
+        {
+            var A = new RMatrix(new double[3, 3] { {4,0,1 }, {0,3,2 }, {1,2,4} });
+            var b = new RVector(new double[3] { 2, 1, 3 });
+            var A1=A.Clone();
+            var b1=b.Clone();
+            var x=Iteration.GaussJacobi(A,b,100,1.0e-4);
+            Assert.IsTrue((A * x - b).GetNorm() < 0.01);
+
+        }
     }
 }

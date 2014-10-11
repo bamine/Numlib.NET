@@ -17,5 +17,19 @@ namespace LinearEquations.Tests
             RVector expected=new RVector(new double[3]{1,2,3});
             Assert.IsTrue((x - expected).GetNorm() <= 0.01);
         }
+
+        [TestMethod]
+        public void TestLU()
+        {
+            var A = new RMatrix(new double[3, 3] { { 2, 4, -6 }, { 6, -4, 2 }, { 4, 2, 6 } });
+            var b = new RVector(new double[3] { 4, 4, 8 });
+            var Anew = A.Clone();
+            var Bnew = A.Clone();
+            var d = LU.LUCrout(A, b);
+            var inverse = LU.LUInverse(Anew);
+            var expected = new RMatrix(new double[3, 3] { { 0.0833, 0.1071, 0.04761 }, { 0.0833, -0.1071, 0.119 }, { -0.0833, -0.03571, 0.09523 } });
+            var x = inverse * A;
+            Assert.IsTrue((inverse*A).GetTrace() -3 <=0.01);
+        }
     }
 }

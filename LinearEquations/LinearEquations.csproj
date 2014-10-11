@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GaussJordan.cs" />
+    <Compile Include="Iteration.cs" />
     <Compile Include="LU.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

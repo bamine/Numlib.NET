@@ -31,7 +31,7 @@ namespace Numlib.NET
         public RMatrix(double[][] matrix)
         {
             this.nRows = matrix.GetLength(0);
-            this.nCols = matrix.GetLength(1);
+            this.nCols = matrix[0].GetLength(0);
             this.matrix = matrix;
         }
 
@@ -257,7 +257,7 @@ namespace Numlib.NET
             var result = new RMatrix(m1.GetnRows, m2.GetnCols);
             for (int i = 0; i < m1.GetnRows; i++)
             {
-                for (int j = 0; i < m2.GetnCols; j++)
+                for (int j = 0; j < m2.GetnCols; j++)
                 {
                     tmp = result[i, j];
                     for (int k = 0; k < result.GetnRows; k++)

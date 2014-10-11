@@ -75,5 +75,21 @@ namespace LinearEquations
             }
             return det;
         }
+
+        public static RMatrix LUInverse(RMatrix matrix)
+        {
+            var nRows = matrix.GetnRows;
+            var u = RMatrix.IndentityMatrix(nRows);
+            LUDecompose(matrix);
+            var uv = new RVector(nRows);
+            for (int i = 0; i < nRows; i++)
+            {
+                uv = u.GetRowVector(i);
+                LUSubstitute(matrix, uv);
+                u.ReplaceRow(uv, i);
+            }
+            var inverse = u.GetTranspose();
+            return inverse;
+        }
     }
 }

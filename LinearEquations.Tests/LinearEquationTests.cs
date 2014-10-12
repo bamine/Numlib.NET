@@ -11,10 +11,10 @@ namespace LinearEquations.Tests
         [TestMethod]
         public void TestGaussJordan()
         {
-            var A = new RMatrix(new double[3,3] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } });
+            var A = new RMatrix(new double[3, 3] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } });
             var b = new RVector(new double[3] { 1, 2, 3 });
             RVector x = GaussJordan.Run(A, b);
-            RVector expected=new RVector(new double[3]{1,2,3});
+            RVector expected = new RVector(new double[3] { 1, 2, 3 });
             Assert.IsTrue((x - expected).GetNorm() <= 0.01);
         }
 
@@ -29,17 +29,17 @@ namespace LinearEquations.Tests
             var inverse = LU.LUInverse(Anew);
             var expected = new RMatrix(new double[3, 3] { { 0.0833, 0.1071, 0.04761 }, { 0.0833, -0.1071, 0.119 }, { -0.0833, -0.03571, 0.09523 } });
             var x = inverse * A;
-            Assert.IsTrue((inverse*A).GetTrace() -3 <=0.01);
+            Assert.IsTrue((inverse * A).GetTrace() - 3 <= 0.01);
         }
 
         [TestMethod]
         public void TestGaussJacobi()
         {
-            var A = new RMatrix(new double[3, 3] { {4,0,1 }, {0,3,2 }, {1,2,4} });
+            var A = new RMatrix(new double[3, 3] { { 4, 0, 1 }, { 0, 3, 2 }, { 1, 2, 4 } });
             var b = new RVector(new double[3] { 2, 1, 3 });
-            var A1=A.Clone();
-            var b1=b.Clone();
-            var x=Iteration.GaussJacobi(A,b,100,1.0e-4);
+            var A1 = A.Clone();
+            var b1 = b.Clone();
+            var x = Iteration.GaussJacobi(A, b, 100, 1.0e-4);
             Assert.IsTrue((A * x - b).GetNorm() < 0.01);
         }
 
@@ -52,6 +52,16 @@ namespace LinearEquations.Tests
             var b1 = b.Clone();
             var x = Iteration.GaussSeidel(A, b, 100, 1.0e-4);
             Assert.IsTrue((A * x - b).GetNorm() < 0.01);
+        }
+
+        [TestMethod]
+        public void TestJacobiEigen()
+        {
+            var A = new RMatrix(new double[4, 4] { { 1, 2, 3, 4 }, { 2, -3, 3, 4 }, { 3, 3, 4, 5 }, { 4, 4, 5, 0 } });
+            var eigenval = new RMatrix(4, 4);
+            var eigenvec = new RMatrix(4, 4);
+            Iteration.JacobiEigenValVec(A, 4, 4, 1.0e-4, out eigenval, out eigenvec);
+            Assert.IsNotNull(eigenval);
         }
     }
 }
